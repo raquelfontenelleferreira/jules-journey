@@ -18,7 +18,7 @@ var config = {
         parent: 'phaser-example',
         autoCenter: Phaser.Scale.CENTER_BOTH,
         width: 1024,
-        height: 768
+        height: 600
     },
 /*     width: 800,
     height: 600, */ 
