@@ -1,4 +1,4 @@
-class SceneTeste extends Phaser.Scene {
+class MainScene extends Phaser.Scene {
     create (){
 
         //divide pela metade considerando o ponto de ancoragem que, por padrão, é no centro da IMAGEM
@@ -6,6 +6,7 @@ class SceneTeste extends Phaser.Scene {
 
         //(eixo x (largura), eixo y (altura), nome da view/objeto).escala
         this.jules = this.physics.add.sprite(20, 550, 'jules').setScale(2)
+        this.jules.damage = false
 
         //Criação de inimigos - Slime
         this.slimes = this.physics.add.group()
@@ -85,7 +86,6 @@ class SceneTeste extends Phaser.Scene {
         //ou seja, eles não ocupam o mesmo espaço na fase
         this.physics.add.collider(this.jules, this.floor);
         this.physics.add.collider(this.jules, this.ground2);
-        this.physics.add.collider(this.jules, this.foods);
         this.physics.add.collider(this.slimes, this.floor);
         this.physics.add.collider(this.slimes, this.ground2);
         this.physics.add.collider(this.foods, this.floor);
@@ -94,10 +94,11 @@ class SceneTeste extends Phaser.Scene {
         //instancia o cursor - permite que use o teclado para exercer um controle
         //NÃO configura a movimentação
         this.cursors = this.input.keyboard.createCursorKeys();
+        this.cursors.enabled = true
 
         //Colisões relativas
-        this.physics.add.collider(this.jules, this.slimes, this.onHit, null, this)
-        this.physics.add.collider(this.jules, this.foods, this.collectFoods, null, this)
+        this.physics.add.overlap(this.jules, this.slimes, this.onHit, null, this)
+        this.physics.add.overlap(this.jules, this.foods, this.collectFoods, null, this)
 
         //Adicionando o total de pontos
         this.score = 0;
@@ -110,38 +111,63 @@ class SceneTeste extends Phaser.Scene {
         this.itemCollect = this.sound.add('itemCollect')
         this.itemCollect.loop = false;
         this.slimeNoise = this.sound.add('slimeNoise')
-        this.slimeNoise.loop = false;
+        this.slimeNoise.loop = false;   
+
     }
+
     update(){
         this.slimes.playAnimation('idleSlime', true)
 
-        if (this.cursors.right.isDown){
-            this.jules.setVelocityX(160)
-            this.jules.flipX = false;
-            if(this.jules.body.touching.down){
-                this.jules.anims.play('walk', true)
+        if (this.cursors.enabled){
+            if (this.cursors.right.isDown){
+                this.jules.setVelocityX(160)
+                this.jules.flipX = false;
+                if(this.jules.body.touching.down){
+                    this.jules.anims.play('walk', true)
+                }
+            } else if (this.cursors.left.isDown){
+                this.jules.setVelocityX(-160)
+                this.jules.flipX = true;
+                if(this.jules.body.touching.down){
+                    this.jules.anims.play('walk', true)
+                } 
+            } else {
+                this.jules.setVelocityX(0)
+                this.jules.anims.play('idle', true)
+       
             }
-        } else if (this.cursors.left.isDown){
-            this.jules.setVelocityX(-160)
-            this.jules.flipX = true;
-            if(this.jules.body.touching.down){
-                this.jules.anims.play('walk', true)
-            } 
-        } else {
-            this.jules.setVelocityX(0)
-            this.jules.anims.play('idle', true)
+
+            if (this.cursors.up.isDown && this.jules.body.touching.down){
+                this.jules.setVelocityY(-350)
+            }
         }
 
-        if (this.cursors.up.isDown && this.jules.body.touching.down){
-            this.jules.setVelocityY(-350)
-        }        
+        if (this.jules.damage){
+            this.jules.setVelocityX(0)
+            //console.log(this.jules.active)
+            this.cursors.enabled = false
+            this.jules.anims.play('death', true)
+            this.morreu = this.time.addEvent({ delay: 1000, callback: this.gameOver, callbackScope: this, loop: false });
+        }
+        
     }
     onHit(jules, slimes){
-        if (slimes.disableBody(true, true)) {
-            this.slimeNoise.play();
+        //console.log(jules.y)
+        //console.log(slimes.y)
+        console.log(jules.y - slimes.y)
+        //if (jules.y <= slimes.y){
+        if ((slimes.y - jules.y) >= 39){
+            if (slimes.disableBody(true, true)) {
+                this.slimeNoise.play();
+            }
+            this.score += 20;
+            this.scoreText.setText('Pontos: ' + this.score);
         }
-        this.score += 20;
-        this.scoreText.setText('Pontos: ' + this.score);
+        else{
+            jules.disableBody(false, false) //active visible
+            console.log(jules.active)
+            this.jules.damage = true 
+        }
 
     }
     collectFoods(jules, foods){
@@ -152,6 +178,12 @@ class SceneTeste extends Phaser.Scene {
         this.scoreText.setText('Pontos: ' + this.score);
     }
     gameOver(){
-        
+        //this.cursors = this.input.keyboard.removeAllKeys(true)
+        this.jules.disableBody(true, true)
+        this.cursors.enabled = false
+        console.log(this.cursors.enabled)
+        //this.scene.start('load')
+        this.scene.start('gameOver');
+        this.sndForestBackground.stop();
     }
 }

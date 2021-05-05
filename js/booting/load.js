@@ -27,10 +27,31 @@ class LoadScene extends Phaser.Scene {
         this.load.audio('itemCollect', ['assets/sounds/itemCollect.mp3'])
         this.load.audio('slimeNoise', ['assets/sounds/slimeNoise.mp3'])
 
+        //Menu Principal
+        this.load.image('playButton', 'assets/playButton.png')
+        this.load.image('optionsButton', 'assets/optionsButton.png')
+        this.load.audio('sndMenu', ['assets/sounds/Netherplace.mp3'])
+        /* let loadingBar = this.add.graphics({
+            fillStyle: {
+                color: 0xffffff
+            }
+        })
+
+        this.load.on("progress", (percent) => {
+            loadingBar.fillRect(0, this.game.renderer.height/2, this.game.renderer.width * percent, 50);
+            console.log(percent)
+        }) */
+
+        //Game Over
+        this.load.image('gameOverAsset', 'assets/gameOver.png')
+        this.load.image('quitButton', 'assets/quitButton.png')
+        this.load.audio('sndtrackGameOver', ['assets/sounds/Moonlight-Flying.mp3'])
         
     }
     create(){
-        this.scene.start('teste');
+        this.scene.start('mainMenu');
+        //this.scene.start('gameOver');
+        //this.scene.start('scene');
     }
 
 }
