@@ -28,6 +28,8 @@ class LoadScene extends Phaser.Scene {
         this.load.audio('slimeNoise', ['assets/sounds/slimeNoise.mp3'])
 
         //Menu Principal
+        this.load.image('mainMenuScreen', 'assets/mainMenu.png')
+        this.load.image('moreButton', 'assets/moreButton.png')
         this.load.image('playButton', 'assets/playButton.png')
         this.load.image('optionsButton', 'assets/optionsButton.png')
         this.load.audio('sndMenu', ['assets/sounds/Netherplace.mp3'])
@@ -43,6 +45,7 @@ class LoadScene extends Phaser.Scene {
         }) */
 
         //Game Over
+        this.load.image('gameOverScreen', 'assets/gameOverScreen.png')
         this.load.image('gameOverAsset', 'assets/gameOver.png')
         this.load.image('quitButton', 'assets/quitButton.png')
         this.load.audio('sndtrackGameOver', ['assets/sounds/Moonlight-Flying.mp3'])
