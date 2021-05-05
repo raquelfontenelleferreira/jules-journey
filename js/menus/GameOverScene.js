@@ -2,7 +2,7 @@ class GameOver extends Phaser.Scene {
     create(){
         this.sky = this.add.image(this.game.renderer.width/2, this.game.renderer.height/2, 'sky')
 
-        this.optionButton = this.add.image(660, 550, 'optionsButton').setScale(0.6)
+        this.optionButton = this.add.image(660, 550, 'quitButton').setScale(0.6)
 
         this.gameOver = this.add.image(this.game.renderer.width/2, this.game.renderer.height/2 - 150, 'gameOverAsset').setScale(0.4)
 
