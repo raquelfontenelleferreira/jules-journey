@@ -49,6 +49,9 @@ class LoadScene extends Phaser.Scene {
         this.load.image('gameOverAsset', 'assets/gameOver.png')
         this.load.image('quitButton', 'assets/quitButton.png')
         this.load.audio('sndtrackGameOver', ['assets/sounds/Moonlight-Flying.mp3'])
+
+        //Tutorial e História
+        this.load.image('blankMenu', 'assets/blankMenu.png')
         
     }
     create(){

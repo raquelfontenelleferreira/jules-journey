@@ -117,6 +117,8 @@ class MainScene extends Phaser.Scene {
 
     update(){
         this.slimes.playAnimation('idleSlime', true)
+        //console.log(this.slimes.getLength());
+        //console.log(this.foods.getLength())
 
         if (this.cursors.enabled){
             if (this.cursors.right.isDown){
@@ -149,39 +151,49 @@ class MainScene extends Phaser.Scene {
             this.jules.anims.play('death', true)
             this.morreu = this.time.addEvent({ delay: 1000, callback: this.gameOver, callbackScope: this, loop: false });
         }
-        
+
+         if(this.jules.x > 753 && this.jules.y > 519) {
+            console.log('Entrou na condição!')
+            this.nextStage();
+        }      
     }
     onHit(jules, slimes){
+        //console.log(jules.x)
         //console.log(jules.y)
         //console.log(slimes.y)
-        console.log(jules.y - slimes.y)
+        //console.log(jules.y - slimes.y)
         //if (jules.y <= slimes.y){
         if ((slimes.y - jules.y) >= 39){
             if (slimes.disableBody(true, true)) {
                 this.slimeNoise.play();
             }
-            this.score += 20;
+            this.score += 30;
             this.scoreText.setText('Pontos: ' + this.score);
         }
         else{
             jules.disableBody(false, false) //active visible
-            console.log(jules.active)
+            //console.log(jules.active)
             this.jules.damage = true 
         }
-
     }
     collectFoods(jules, foods){
         if(foods.disableBody(true, true)) {
             this.itemCollect.play(); 
         }
-        this.score += 50;
+        this.score += 20;
         this.scoreText.setText('Pontos: ' + this.score);
     }
+    nextStage(){
+        this.sndForestBackground.stop();
+        this.game.loop.stop();
+        //this.scene.start('fase1');
+    }
+
     gameOver(){
         //this.cursors = this.input.keyboard.removeAllKeys(true)
         this.jules.disableBody(true, true)
         this.cursors.enabled = false
-        console.log(this.cursors.enabled)
+        //console.log(this.cursors.enabled)
         //this.scene.start('load')
         this.scene.start('gameOver');
         this.sndForestBackground.stop();

@@ -10,6 +10,7 @@ class MainMenu extends Phaser.Scene {
         this.moreButton = this.add.image(this.game.renderer.width/2 + 250, this.game.renderer.height/2 + 200, 'moreButton').setScale(0.65)
 
         this.playButton.setInteractive();
+        this.moreButton.setInteractive();
         /*
             pointer events:
             - pointerover = hovering
@@ -18,7 +19,13 @@ class MainMenu extends Phaser.Scene {
             - pointerdown = just click
         */
         this.playButton.on("pointerdown", () => {
-            this.scene.start('scene');
+            this.scene.start('story');
+            //this.scene.start('scene');
+            this.sndMainMenu.stop();
+        })
+
+        this.moreButton.on("pointerdown", () => {
+            this.scene.start('tutorial');
             this.sndMainMenu.stop();
         })
     }
