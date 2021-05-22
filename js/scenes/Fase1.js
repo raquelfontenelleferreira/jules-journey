@@ -78,7 +78,7 @@ class Fase1 extends Phaser.Scene {
         //Física da plataforma de baixo
         //tileSprite cria sequências de uma mesma imagem
         //(largura da tela, altura da tela, (largura da imagem x qts vezes ela aparece), (altura imagem * qts vezes aparece), view).setOrigin
-        this.floor = this.add.tileSprite(this.game.renderer.width, this.game.renderer.height, 800 * 1, 17 * 1, 'ground').setOrigin(1);
+        this.floor = this.add.tileSprite(this.game.renderer.width, this.game.renderer.height, 800, 17 * 1, 'ground').setOrigin(1);
 
         //verifica se há física no objeto
         this.physics.add.existing(this.floor, true);
@@ -192,7 +192,7 @@ class Fase1 extends Phaser.Scene {
     timer(){
         time--
         if(time === 0) {
-            this.scene.start('gameOver');
+            this.gameOver();
         }
     }
     collectFoods(jules, foods){

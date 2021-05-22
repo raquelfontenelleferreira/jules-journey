@@ -47,6 +47,6 @@ class MainMenu extends Phaser.Scene {
     }
 }
 
-var time = 100;
+var time = 10;
 var highscore = 0;
 var currentScore = 0;

@@ -178,7 +178,7 @@ class Fase3 extends Phaser.Scene {
         timer(){
             time--
             if(time === 0) {
-                this.scene.start('gameOver');
+                this.gameOver();
             }
         }
         nextStage(){
