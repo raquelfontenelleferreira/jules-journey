@@ -4,7 +4,7 @@ class StoryMenu extends MainMenu {
         this.storyScreen.setInteractive();
 
         this.storyScreen.on("pointerdown", () => {
-            this.scene.start('scene');
+            this.scene.start('fase1');
         })
 
         this.storyText = this.add.text(

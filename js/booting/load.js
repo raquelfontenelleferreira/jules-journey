@@ -10,6 +10,7 @@ class LoadScene extends Phaser.Scene {
         this.load.image('frenchFries', 'assets/frenchFries.png')
         this.load.image('pizza', 'assets/pizza.png')
         this.load.image('strawberryCake', 'assets/strawberryCake.png')
+        this.load.image('checkpoint', 'assets/Checkpoint.png')
         
         //Spritesheets
         this.load.spritesheet('jules', 'assets/julessprite.png', {
@@ -52,10 +53,16 @@ class LoadScene extends Phaser.Scene {
 
         //Tutorial e História
         this.load.image('blankMenu', 'assets/blankMenu.png')
+
+        //Tela Conclusão de Fase
+        this.load.image('endForest', 'assets/faseCompleta.png')
         
     }
     create(){
+        //this.scene.start('finalDaFase');
         this.scene.start('mainMenu');
+        //this.scene.start('fase3');
+        //this.scene.start('fase1');
         //this.scene.start('gameOver');
         //this.scene.start('scene');
     }

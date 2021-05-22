@@ -1,5 +1,16 @@
 class MainMenu extends Phaser.Scene {
     create() {
+
+        if(!localStorage.getItem('jules_highScore')){
+			localStorage.setItem('jules_highScore', 0);
+		}
+		
+		if(highscore > localStorage.getItem('jules_highScore')){
+			localStorage.setItem('jules_highScore', highscore);
+		} else {
+			highscore = localStorage.getItem('jules_highScore');
+        }
+
         this.mainMenuScreen = this.add.image(this.game.renderer.width/2, this.game.renderer.height/2, 'mainMenuScreen')
         this.sndMainMenu = this.sound.add('sndMenu')
         this.sndMainMenu.loop = true;
@@ -28,5 +39,14 @@ class MainMenu extends Phaser.Scene {
             this.scene.start('tutorial');
             this.sndMainMenu.stop();
         })
+
+        //Highscore
+        this.txtHighScore = this.add.text(this.game.renderer.width / 2, 430, 'HIGHSCORE: '+ highscore, 
+        {fontFamily: 'Verdana', fontSize: 24, color: '#b00298'}).setOrigin(0.5);
+        this.txtHighScore.setTintFill(0xf7f2ad, 0xf7f2ad, 0xbf40bf, 0xbf40bf);
     }
 }
+
+var time = 100;
+var highscore = 0;
+var currentScore = 0;
