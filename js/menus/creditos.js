@@ -9,7 +9,7 @@ class CreditsMenu extends Phaser.Scene {
         this.creditMainText = this.add.text(200, 10, 'Créditos & Agradecimentos', {fontFamily: 'Verdana', fontSize: 30, color: '#b00298'})
         
         this.credittext = this.add.text(280, 50,  'Agradecimentos Especiais', {fontFamily: 'Verdana', fontSize: 20, color: '#b00298'})
-        this.credittext = this.add.text(230, 80,  'Ao J.V.S, sem você eu não teria conseguido.', {fontFamily: 'Verdana', fontSize: 16, color: '#b00298'})
+        this.credittext = this.add.text(180, 80,  'Ao J.V.S e D.A.H, sem vocês eu não teria conseguido.', {fontFamily: 'Verdana', fontSize: 16, color: '#b00298'})
 
         this.credittext = this.add.text(160, 120,  'Desenvolvedora: ', {fontFamily: 'Verdana', fontSize: 20, color: '#b00298'})
         this.credittext = this.add.text(160, 150,  'Raquel Fontenelle Ferreira', {fontFamily: 'Verdana', fontSize: 16, color: '#b00298'})
