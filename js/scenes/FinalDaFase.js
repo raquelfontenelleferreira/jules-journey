@@ -4,15 +4,34 @@ class FinalDaFase extends Phaser.Scene {
         this.endPhase.setInteractive();
 
         this.endPhase.on("pointerdown", () => {
+            //this.endPhase.stop();
             this.scene.start('mainMenu');
         })
 
+        this.pontuacao = this.add.text(
+            300,
+            150,
+            'Pontuação: ' + currentScore,
+            {fontFamily: 'Verdana', fontSize: 24, color: '#fff'}
+        )
+
+        this.temp = this.add.text(
+            300,
+            250,
+            'Tempo: ' + time,
+            {fontFamily: 'Verdana', fontSize: 24, color: '#fff'}
+        )
+
         this.total = this.add.text(
             300,
-            450,
+            350,
             'Total: ' + currentScore,
             {fontFamily: 'Verdana', fontSize: 24, color: '#fff'}
         )
+
+        this.sndEndPhase= this.sound.add('endAudio')
+        this.sndEndPhase.loop = true;
+        this.sndEndPhase.play();
 
         //Lidando com o highscore
         if(currentScore > highscore){

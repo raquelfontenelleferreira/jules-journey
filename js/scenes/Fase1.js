@@ -3,7 +3,7 @@ class Fase1 extends Phaser.Scene {
         this.Stage1 = true;
 
         //divide pela metade considerando o ponto de ancoragem que, por padrão, é no centro da IMAGEM
-        this.sky = this.add.image(this.game.renderer.width/2, this.game.renderer.height/2, 'sky')
+        this.sky = this.add.image(this.game.renderer.width/2, this.game.renderer.height/2, 'dawn')
 
         //(eixo x (largura), eixo y (altura), nome da view/objeto).escala
         this.jules = this.physics.add.sprite(20, 550, 'jules').setScale(2)

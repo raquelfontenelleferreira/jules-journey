@@ -1,7 +1,9 @@
 class LoadScene extends Phaser.Scene {
     preload(){
         //Imagens
-        this.load.image('sky', 'assets/sky.png')
+        this.load.image('dawn', 'assets/dawnSky.png')
+        this.load.image('morning', 'assets/morningSky.png')
+        this.load.image('sunset', 'assets/sunsetSky.png')
         this.load.image('ground', 'assets/plataforma-grama.png')
         this.load.image('ground2', 'assets/chao.png');
         this.load.image('iceCream', 'assets/iceCream.png')
@@ -56,13 +58,14 @@ class LoadScene extends Phaser.Scene {
 
         //Tela Conclusão de Fase
         this.load.image('endForest', 'assets/faseCompleta.png')
+        this.load.audio('endAudio', ['assets/sounds/end-phase.mp3'])
         
     }
     create(){
         //this.scene.start('finalDaFase');
-        //this.scene.start('mainMenu');
+        this.scene.start('mainMenu');
         //this.scene.start('fase3');
-        this.scene.start('fase1');
+        //this.scene.start('fase1');
         //this.scene.start('gameOver');
         //this.scene.start('scene');
     }

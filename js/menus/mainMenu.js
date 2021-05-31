@@ -17,11 +17,19 @@ class MainMenu extends Phaser.Scene {
         this.sndMainMenu.play();
 
         this.playButton = this.add.image(this.game.renderer.width/2, this.game.renderer.height/2 + 200, 'playButton').setScale(0.65)
-        this.optionButton = this.add.image(this.game.renderer.width/2 - 250, this.game.renderer.height/2 + 200, 'optionsButton').setScale(0.65)
-        this.moreButton = this.add.image(this.game.renderer.width/2 + 250, this.game.renderer.height/2 + 200, 'moreButton').setScale(0.65)
+        //this.optionButton = this.add.image(this.game.renderer.width/2 - 250, this.game.renderer.height/2 + 200, 'optionsButton').setScale(0.65)
+        //this.moreButton = this.add.image(this.game.renderer.width/2 + 250, this.game.renderer.height/2 + 200, 'moreButton').setScale(0.65)
+
+        this.moreButton = this.add.text(this.game.renderer.width/2 + 250, this.game.renderer.height/2 + 200, 'TUTORIAL', {fontFamily: 'Verdana', fontSize: 24, color: '#fff'}).setOrigin(0.5)
+        this.moreButton.setTintFill(0xf7f2ad, 0xf7f2ad, 0xbf40bf, 0xbf40bf)
+
+        this.optionButton = this.add.text(this.game.renderer.width/2 - 250, this.game.renderer.height/2 + 200, 'CRÉDITOS', {fontFamily: 'Verdana', fontSize: 24, color: '#fff'}).setOrigin(0.5)
+        this.optionButton.setTintFill(0xf7f2ad, 0xf7f2ad, 0xbf40bf, 0xbf40bf)
 
         this.playButton.setInteractive();
         this.moreButton.setInteractive();
+        this.optionButton.setInteractive();
+
         /*
             pointer events:
             - pointerover = hovering
@@ -40,6 +48,11 @@ class MainMenu extends Phaser.Scene {
             this.sndMainMenu.stop();
         })
 
+        this.optionButton.on("pointerdown", () => {
+            this.scene.start('creditos');
+            this.sndMainMenu.stop();
+        })
+
         //Highscore
         this.txtHighScore = this.add.text(this.game.renderer.width / 2, 430, 'HIGHSCORE: '+ highscore, 
         {fontFamily: 'Verdana', fontSize: 24, color: '#b00298'}).setOrigin(0.5);
@@ -47,6 +60,6 @@ class MainMenu extends Phaser.Scene {
     }
 }
 
-var time = 10;
+var time = 100;
 var highscore = 0;
 var currentScore = 0;

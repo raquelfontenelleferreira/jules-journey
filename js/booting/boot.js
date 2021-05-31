@@ -5,6 +5,7 @@ class BootScene extends Phaser.Scene {
         this.scene.add('fase1', Fase1); 
         this.scene.add('fase1Bonus', Fase1Bonus); 
         this.scene.add('mainMenu', MainMenu); 
+        this.scene.add('creditos', CreditsMenu); 
         this.scene.add('tutorial', TutorialMenu); 
         this.scene.add('story', StoryMenu); 
         this.scene.add('fase2', Fase2); 

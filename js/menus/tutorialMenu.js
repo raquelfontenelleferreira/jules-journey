@@ -23,14 +23,14 @@ class TutorialMenu extends MainMenu {
             'Pontuação:',
             {fontFamily: 'Verdana', fontSize: 20, color: '#b00298'})
         this.score = this.add.text(
-            230, 
+            360, 
             250,
-            'Slimes - 30 | Morcego - 40 | Caveira - 50',
+            'Slimes - 30',
             {fontFamily: 'Verdana', fontSize: 20, color: '#b00298'})
         this.comida = this.add.text(
             360, 
             300,
-            'Comidas - 50',
+            'Comidas - 20',
             {fontFamily: 'Verdana', fontSize: 20, color: '#b00298'})
 
         this.quitButton = this.add.image(660, 550, 'quitButton').setScale(0.6)

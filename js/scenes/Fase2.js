@@ -2,7 +2,7 @@ class Fase2 extends Phaser.Scene {
     create() {
         this.Stage2 = true;
         
-        this.sky = this.add.image(this.game.renderer.width/2, this.game.renderer.height/2, 'sky')
+        this.sky = this.add.image(this.game.renderer.width/2, this.game.renderer.height/2, 'morning')
 
         this.jules = this.physics.add.sprite(20, 530, 'jules').setScale(2)
         this.jules.damage = false

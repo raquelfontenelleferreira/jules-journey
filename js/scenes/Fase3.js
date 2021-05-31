@@ -2,7 +2,7 @@ class Fase3 extends Phaser.Scene {
     create() {
         this.Stage3 = true;
         
-        this.sky = this.add.image(this.game.renderer.width/2, this.game.renderer.height/2, 'sky')
+        this.sky = this.add.image(this.game.renderer.width/2, this.game.renderer.height/2, 'sunset')
 
         this.checkpoint = this.add.image(753, 550, 'checkpoint')
 
