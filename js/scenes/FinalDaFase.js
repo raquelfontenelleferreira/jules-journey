@@ -4,7 +4,7 @@ class FinalDaFase extends Phaser.Scene {
         this.endPhase.setInteractive();
 
         this.endPhase.on("pointerdown", () => {
-            //this.endPhase.stop();
+            this.sndEndPhase.stop();
             this.scene.start('mainMenu');
         })
 

@@ -62,8 +62,9 @@ class LoadScene extends Phaser.Scene {
         
     }
     create(){
-        //this.scene.start('finalDaFase');
         this.scene.start('mainMenu');
+        //this.scene.start('story');
+        //this.scene.start('finalDaFase');
         //this.scene.start('fase3');
         //this.scene.start('fase1');
         //this.scene.start('gameOver');
